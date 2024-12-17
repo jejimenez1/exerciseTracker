@@ -40,16 +40,15 @@ app.post('/api/users', async (req, res) => {
   const userObject = new User({
     username: req.body.username
   })
-  
-});
 
-try {
-  const user = await userObject.save()
-  res.json(user)
-} catch (err) {
-  console.log('Error guardando el usuario', err)
-  res.status(500).send('Error guardando nuevo usuario')
-}
+  try {
+    const user = await userObject.save()
+    res.json(user)
+  } catch (err) {
+    console.log('Error guardando el usuario', err)
+    res.status(500).send('Error guardando nuevo usuario')
+  }
+});
 
 const listener = app.listen(process.env.PORT || 3000, () => {
   console.log('Your app is listening on port ' + listener.address().port)
