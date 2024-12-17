@@ -20,5 +20,6 @@
 	"keywords": [
 		"node",
 		"express"
-	]
+	],
+	"type": "module"
 }
