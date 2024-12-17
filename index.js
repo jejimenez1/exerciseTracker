@@ -69,7 +69,7 @@ app.post('/api/users/:_id/exercises', async (req, res) => {
     const user = await User.findById(id)
     if (!user) {
       res.send("Could not find user")
-    } esle {
+    } else {
       const exerciseObj = new Exercise({
         userID: user._id,
         description,
