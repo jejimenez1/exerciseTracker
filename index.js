@@ -1,10 +1,16 @@
+require('dotenv').config()
 import express from 'express';
-const express = require('express')
+import cors from 'cors';
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+/* const express = require('express')
 const app = express()
 const cors = require('cors')
-require('dotenv').config()
-const mongoose = require('mongoose')
-const { Schema } = mongoose
+const mongoose = require('mongoose') */
+
+const app = express()
+
+const { Schema } = mongoose;
 
 MONGO_URI='mongodb+srv://jesujimenezochoa:8fZgYpiFRu1N9OZW@cluster0.tymqd.mongodb.net/user?retryWrites=true&w=majority&appName=Cluster0'
 mongoose.connect(MONGO_URI);
@@ -42,6 +48,7 @@ try {
   res.json(user)
 } catch (err) {
   console.log('Error guardando el usuario', err)
+  res.status(500).send('Error guardando nuevo usuario')
 }
 
 const listener = app.listen(process.env.PORT || 3000, () => {
