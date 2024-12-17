@@ -3,7 +3,6 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import { fileURLToPath } from 'url';  // Importar fileURLToPath
 import path from 'path';  // Importar path
-import req from 'express/lib/request';
 
 /* const express = require('express')
 const app = express()
