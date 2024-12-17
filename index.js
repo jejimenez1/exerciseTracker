@@ -3,6 +3,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import { fileURLToPath } from 'url';  // Importar fileURLToPath
 import path from 'path';  // Importar path
+import req from 'express/lib/request';
 
 /* const express = require('express')
 const app = express()
@@ -98,6 +99,48 @@ app.get('/api/users', async (req, res) => {
   } else {
     res.json(users);
   }
+});
+
+app.get('/api//users/:_id/logs', async (req, res) => {
+  const { from, to, limit } = req.query;
+  const id = req.params._id;
+  const user = await User.findById(id);
+  if (!user) {
+    res.send('No se encontraron usuarios');
+    return;
+  }
+  
+  let dateObj = {}
+  if (from) {
+    dateObj["$gte"] = new Date(from)
+  }
+  if (to) {
+    dateObj["$lte"] = new Date(to)
+  }
+  let filter = {
+    userID: id
+  }
+  if(from || to) {
+    filter.date = dateObj;
+  }
+
+  const exercises = await Exercise.find(filter).limit(+limit ?? 500)
+
+  const log = exercises.map(i => ({
+    description: i.description,
+    duration: i.duration,
+    date: e.date.toDateString()
+  }))
+
+  res.json({
+
+
+  username: user.username,
+  count: exercises.length,
+  _id: user._id,
+  log
+    
+  })
 });
 
 const listener = app.listen(process.env.PORT || 3000, () => {
