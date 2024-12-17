@@ -10,7 +10,7 @@ const app = express()
 
 const { Schema } = mongoose;
 
-MONGO_URI='mongodb+srv://jesujimenezochoa:8fZgYpiFRu1N9OZW@cluster0.tymqd.mongodb.net/exerciseTracker?retryWrites=true&w=majority&appName=Cluster0'
+const MONGO_URI='mongodb+srv://jesujimenezochoa:8fZgYpiFRu1N9OZW@cluster0.tymqd.mongodb.net/exerciseTracker?retryWrites=true&w=majority&appName=Cluster0'
 mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected successfully'))
   .catch(err => console.error('Error connecting to MongoDB:', err));
