@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
+
 /* const express = require('express')
 const app = express()
 const cors = require('cors')
@@ -18,8 +19,16 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 app.use(cors())
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
-app.get('/', (req, res) => {
+
+/*  app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html')
+});  */
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/index.html'));  // Usar `path.join` para construir la ruta correctamente
 });
 
 const UserSchema = new Schema({
