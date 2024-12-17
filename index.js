@@ -91,7 +91,7 @@ app.post('/api/users/:_id/exercises', async (req, res) => {
   }
 });
 
-app.get('/api/users/:_id/logs', async (req, res) => {
+app.get('/api/users', async (req, res) => {
   const users = await User.find({}).select("_id username");
   if (!users) {
     res.send('No users found');
