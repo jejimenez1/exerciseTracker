@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
+import { fileURLToPath } from 'url';  // Importar fileURLToPath
+import path from 'path';  // Importar path
 
 /* const express = require('express')
 const app = express()
